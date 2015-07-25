@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  IgnorableNamespaces="uap mp">
+
+  <Identity
+    Name="7304a498-82e6-4db2-86f8-2660b5580812"
+    Publisher="CN=matatabi-ux"
+    Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="7304a498-82e6-4db2-86f8-2660b5580812" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>RuntimeBroker</DisplayName>
+    <PublisherDisplayName>matatabi-ux</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.10069.0" MaxVersionTested="10.0.10069.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="RuntimeBroker.App">
+      <uap:VisualElements
+        DisplayName="RuntimeBroker"
+        Square150x150Logo="Assets\Logo.png"
+        Square44x44Logo="Assets\SmallLogo.png"
+        Description="RuntimeBroker"
+        BackgroundColor="#464646">
+        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>clrhost.dll</Path>
+        <ActivatableClass ActivatableClassId="RuntimeBroker.Broker.AppLauncher" ThreadingModel="both">
+          <ActivatableClassAttribute Name="DesktopApplicationPath" Type="string" Value="%RuntimeBrokerPath%" />
+        </ActivatableClass>
+      </InProcessServer>
+    </Extension>
+  </Extensions>
+  
+</Package>
